@@ -14,6 +14,17 @@ public class App {
             System.out.println("2. JSON");
             System.out.print("Select (1/2): ");
             String choice = reader.readLine();
+
+            DataHandler dataHandler;
+            //ユーザーから値を受け取り2だったらJSONをインスタンスを作成それ以外はCSVD
+            if (choice.equals("2")) {
+                dataHandler = new JSONDataHandler();
+            } else {
+                dataHandler = new CSVDataHandler();
+            }
+
+            RecipeUI recipeui = new RecipeUI(dataHandler);
+            recipeui.displayMenu();
             
 
         } catch (Exception e) {
